@@ -6,3 +6,5 @@ export default function createProject(name) {
     console.log(projectList)
     return newProject    
 }
+
+export { projectList }
