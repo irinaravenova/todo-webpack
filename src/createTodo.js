@@ -1,3 +1,6 @@
+let allTodos = [];
+
+// New toDo class constructor
 class ToDo {
     constructor(project, title, description, dueDate, priority, notes, checkList) {
         this.project = project
@@ -10,11 +13,20 @@ class ToDo {
     }
 }
 
-// Function that takes in data and creates a Todo object
 export default function createTodo(project, title, description, dueDate, priority, notes, checkList) {
     const newTodo = new ToDo(project, title, description, dueDate, priority, notes, checkList)
+    allTodos.push(newTodo)
+    console.log(allTodos)
     return newTodo
 }
+
+export { allTodos }
+
+
+
+
+
+
 
 
 // example console.log test todo object

@@ -1,13 +1,24 @@
 import { projectList } from "./createProject"
 
-// Renders each project in project array to DOM
-
 export default function renderProjects() {
 
+    const sidebar = document.querySelector('.sidebar')
+
     projectList.forEach((project) => {
-        const projectName = document.createElement("p")
-        projectName.innerHTML = `${project}`
-        document.body.appendChild(projectName)
+        const projectButton = document.createElement("button")
+        projectButton.className = "project-button"
+        projectButton.innerHTML = `${project}`
+        sidebar.appendChild(projectButton)
+
+        // Add event listener to each project button
+        // that will display associated todos attached.
+
+
+
+
+        
+
+        
     })
 
 }
