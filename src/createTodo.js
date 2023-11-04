@@ -16,21 +16,7 @@ class ToDo {
 export default function createTodo(project, title, description, dueDate, priority, notes, checkList) {
     const newTodo = new ToDo(project, title, description, dueDate, priority, notes, checkList)
     allTodos.push(newTodo)
-    console.log(allTodos)
     return newTodo
 }
 
 export { allTodos }
-
-
-
-
-
-
-
-
-// example console.log test todo object
-// for (const [key, value] of Object.entries(newTodo)) {
-//     console.log(`${value}`);
-// }
-

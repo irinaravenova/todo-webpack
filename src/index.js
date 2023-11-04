@@ -16,7 +16,7 @@ const sidebar = document.querySelector('.sidebar')
 const header = document.querySelector('.header')
 const content = document.querySelector('.content')
 
-// Create project button
+// Create new project button
 const createProjectButton = document.createElement('button')
 createProjectButton.innerHTML = "Create New Project"
 sidebar.appendChild(createProjectButton)
@@ -24,11 +24,9 @@ sidebar.appendChild(createProjectButton)
 
 // TEST SUBJECTS
 const testTask = createTodo('today', 'bake cake', 'chocolate', 'tomorrow', 'high', 'n/a', true)
-const testTask1 = createTodo('tomorrow', 'bake cake', 'chocolate', 'tomorrow', 'high', 'n/a', false)
-const testTask2 = createTodo('yesterday', 'bake cake', 'chocolate', 'tomorrow', 'high', 'n/a', true)
-console.log(testTask)
-console.log(testTask1)
-console.log(testTask2)
+const testTask1 = createTodo('tomorrow', 'bake pie', 'chocolate', 'tomorrow', 'high', 'n/a', false)
+const testTask2 = createTodo('yesterday', 'bake brownie', 'chocolate', 'tomorrow', 'high', 'n/a', true)
+
 
 const testProject = createProject('Today')
 const testProject1 = createProject('tomorrow')
@@ -36,15 +34,11 @@ const testProject2 = createProject('yesterday')
 
 renderProjects()
 renderTodos()
-console.log(`${allTodos}`)
 
 
 
 
-// Sidebar div
-// const sideBar = document.createElement('div')
-// sideBar.className = "sidebar"
-// document.body.appendChild(sideBar)
+
 
 
 
