@@ -26,6 +26,7 @@ sidebar.appendChild(createProjectButton)
 const testTask = createTodo('today', 'bake cake', 'chocolate', 'tomorrow', 'high', 'n/a', true)
 const testTask1 = createTodo('tomorrow', 'bake pie', 'chocolate', 'tomorrow', 'high', 'n/a', false)
 const testTask2 = createTodo('yesterday', 'bake brownie', 'chocolate', 'tomorrow', 'high', 'n/a', true)
+const testTask3 = createTodo('today', 'bake cookie', 'vanilla', 'tomorrow', 'low', 'n/a', true)
 
 
 const testProject = createProject('Today')
