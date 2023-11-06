@@ -1,25 +1,69 @@
+@font-face {
+    font-family: 'DM Serif Display';
+    src: url('./dm-serif-display.woff2') format('woff2');
+    font-style: normal;
+    font-weight: 400;
+}
+
 body {
-    background-color: lightcyan;
+    font-family: 'DM Serif Display';
+    margin: 0;
+    padding: 0;
+    background-color: rgb(147, 212, 212);
     height: 100vh;
     display: grid;
     grid-auto-flow: column;
-    grid-auto-columns: .75fr 5fr;
+    grid-template-columns: minmax(200px, 1fr) 5fr;
+    grid-template-rows: 1fr 100%;
     grid-template-areas: "sidebar header"
                         "sidebar content"
 }
 
 .header{
+    display: flex;
+    font-style: italic;
     border-style: dotted;
     grid-area: header;
+    height: 100px;
+    justify-content: center;    
+    align-items: center;
 }
 
 .sidebar {
     border-style: dotted;
     grid-area: sidebar;
-    display: grid;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: lightcyan;
+}
+.checkmate {
+    height: 50px;
+    align-items: center;
 }
 
+.all-projects-button,
+.project-button,
+.create-project-button {
+    font-family: 'DM Serif Display';
+    height: 50px;
+    border-style: dotted;
+    background-color: transparent;
+    width: 80%;
+}
 .content {
     border-style: dotted;
     grid-area: content;
+    padding-left: 15px;
+    padding-right: 15px;
+    padding-top: 15px;
+}
+
+.todo-div {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: 30% 45% auto;
+    border-style: dotted;
+    margin-bottom: 15px;
+    padding: 5px;
 }

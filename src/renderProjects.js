@@ -9,15 +9,6 @@ export default function renderProjects() {
         projectButton.className = "project-button"
         projectButton.innerHTML = `${project}`
         sidebar.appendChild(projectButton)
-
-        // Add event listener to each project button
-        // that will display associated todos attached.
-
-
-
-
-        
-
         
     })
 

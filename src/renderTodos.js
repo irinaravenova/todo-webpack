@@ -1,7 +1,7 @@
 import { allTodos } from "./createTodo";
 
 export default function renderTodos() {
-    // Render todos where the project name is selected
+    // Render todos when the associated project name is selected
 
     const sidebar = document.querySelector('.sidebar')
     const listOfProjectButtons = document.querySelectorAll('.project-button')
@@ -21,17 +21,49 @@ export default function renderTodos() {
             allTodos.forEach(element => {
                 if ((element.project.toUpperCase()) == projectName.toUpperCase()) {
                     // Test to make sure objects are being retreived properly
-                    console.log(element)
 
                     // Create div container for the Todo object and assign class to it
                     const toDoContainer = document.createElement('div')
                     toDoContainer.className = "todo-div"
 
                     // **** ToDo object render, still needs formatting ****
-                    const toDoContent = document.createElement('p')
-                    toDoContent.innerHTML = `${element.title} + ${element.description}`
+                    const toDoTitle = document.createElement('p')
+                    toDoTitle.innerHTML = `${element.title}`
 
-                    toDoContainer.appendChild(toDoContent)
+                    const toDoDescription = document.createElement('p')
+                    toDoDescription.innerHTML = `${element.description}`
+
+                    // Checkbox to toggle completion of task
+                    const checkBox = document.createElement('INPUT')
+                    checkBox.setAttribute("type", "checkbox")
+
+                    // Priority range dropdown menu
+                    const priorityRange = document.createElement('select')
+                    let option1 = document.createElement("option")
+                    option1.value = 1;
+                    option1.text = "High"
+                    priorityRange.options.add(option1)
+
+                    let option2 = document.createElement("option")
+                    option2.value = 2;
+                    option2.text = "Medium"
+                    priorityRange.options.add(option2)
+
+                    let option3 = document.createElement("option")
+                    option3.value = 3;
+                    option3.text = "Low"
+                    priorityRange.options.add(option3)
+
+                    // Delete button
+                    // const deleteTodo = document.createElement('button')
+                    // deleteTodo.innerHTML = "X"
+
+                    // Append new elements to toDo container
+                    // toDoContainer.appendChild(deleteTodo)
+                    toDoContainer.appendChild(toDoTitle)
+                    toDoContainer.appendChild(toDoDescription)
+                    toDoContainer.appendChild(priorityRange)
+                    toDoContainer.appendChild(checkBox)
                     contentBox.appendChild(toDoContainer)
                 }
             })
