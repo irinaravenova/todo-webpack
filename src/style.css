@@ -22,26 +22,27 @@ body {
 .header{
     display: flex;
     font-style: italic;
-    border-style: dotted;
     grid-area: header;
     height: 100px;
     justify-content: center;    
     align-items: center;
+    background-color: rgb(127, 207, 207);
+    box-shadow: 0 4px 2px -2px rgb(0, 0, 0, .25);
 }
 
 .sidebar {
-    border-style: dotted;
     grid-area: sidebar;
     display: flex;
     align-items: center;
     flex-direction: column;
-    background-color: lightcyan;
+    background-color: rgb(127, 207, 207);
 }
 .checkmate {
     height: 50px;
     align-items: center;
 }
 
+.create-task-button,
 .all-projects-button,
 .project-button,
 .create-project-button {
@@ -51,8 +52,13 @@ body {
     background-color: transparent;
     width: 80%;
 }
+
+.create-project-button,
+.create-task-button {
+    margin-bottom: 25px;
+}
+
 .content {
-    border-style: dotted;
     grid-area: content;
     padding-left: 15px;
     padding-right: 15px;
@@ -66,4 +72,12 @@ body {
     border-style: dotted;
     margin-bottom: 15px;
     padding: 5px;
+}
+
+.todo-div:nth-child(even) {
+    background-color: rgb(127, 207, 207);
+}
+
+.todo-div:nth-child(odd) {
+    background-color: rgb(168, 234, 234);
 }

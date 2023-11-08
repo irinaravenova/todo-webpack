@@ -19,16 +19,49 @@ const testProject2 = createProject('Yesterday')
 
 // ** END TEST TODOS ** //
 
+
+
 // Get DOM elements
 const sidebar = document.querySelector('.sidebar')
 const header = document.querySelector('.header')
 const content = document.querySelector('.content')
+const addTodoForm = document.getElementById('addTodoForm')
+
+
+
+// Create New Task button
+const createNewTodo = document.createElement('button')
+createNewTodo.className = "create-task-button"
+createNewTodo.innerHTML = "Create Todo"
+sidebar.appendChild(createNewTodo)
+createNewTodo.addEventListener('click', () => {
+    // Render form dialog box and call create Todo function onSubmit
+    addTodoForm.showModal()
+})
+
+// On submission of toDoForm, create new toDo objection using Todo class constructor function
+document.getElementById('submit').addEventListener('click', function(e) {
+    e.preventDefault()
+    // let newTodoObject = createTodo();
+
+})
+
+
+
+
 
 // Create New Project button
 const createProjectButton = document.createElement('button')
 createProjectButton.className = "create-project-button"
-createProjectButton.innerHTML = "Create New Project"
+createProjectButton.innerHTML = "Create Project"
 sidebar.appendChild(createProjectButton)
+createProjectButton.addEventListener('click', () => {
+    // Render form dialog box and call create Project function onSubmit
+
+
+
+})
+
 
 
 
@@ -38,10 +71,10 @@ sidebar.appendChild(createProjectButton)
 
 renderAll()
 
-
+// Lists all todos as default upon intial page load
 const listAllTodos = document.createElement('button')
 listAllTodos.className = "all-projects-button"
-listAllTodos.innerHTML = "All"
+listAllTodos.innerHTML = "All Tasks"
 sidebar.appendChild(listAllTodos)
 listAllTodos.addEventListener('click', (e) => {
     e.preventDefault()

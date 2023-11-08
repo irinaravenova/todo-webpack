@@ -6,11 +6,32 @@
     <title>CheckMate</title>
 </head>
 <body>
+
+    <dialog id="addTodoForm">
+        <form action="" id="addTodoForm">
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" />
+            <label for="author">Author:</label>
+            <input type="text" name="author" id="author" autocomplete="off" />
+            <label for="pages">Pages:</label>
+            <input type="number" name="pages" id="pages" />
+            <label for="read">Read:</label>
+            <input type="checkbox" name="read" id="read" />
+                <div>
+                    <button value="cancel" formmethod="dialog">Cancel</button>
+                    <button value="default" type="submit" name="submit" formmethod="dialog" class="confirmBtn" id="submit">Add to Library</button>
+                </div>
+        </form>
+    </dialog>
+
+
+
+
     <div class="sidebar">
         <h1 class="checkmate">CheckMate</h1>
     </div>
     <div class="header">
-        <h2>GetErDone</h2>
+        <h2>You Got This</h2>
     </div>
         
     <div class="content">
