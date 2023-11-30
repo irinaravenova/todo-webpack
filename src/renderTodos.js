@@ -17,6 +17,10 @@ export default function renderTodos() {
             const contentBox = document.querySelector('.content')
             contentBox.replaceChildren()
 
+            const projectTitle = document.createElement('h1')
+            projectTitle.innerHTML = projectName
+            contentBox.appendChild(projectTitle)
+
             // Iterate through array of objects to find matching project name property
             allTodos.forEach(element => {
                 if ((element.project.toUpperCase()) == projectName.toUpperCase()) {
@@ -39,6 +43,7 @@ export default function renderTodos() {
 
                     // Priority range dropdown menu
                     const priorityRange = document.createElement('select')
+                    
                     let option1 = document.createElement("option")
                     option1.value = 1;
                     option1.text = "High"

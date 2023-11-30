@@ -6,6 +6,10 @@ export default function renderAll() {
     const contentBox = document.querySelector('.content')
     contentBox.replaceChildren()
 
+    const projectTitle = document.createElement('h1')
+    projectTitle.innerHTML = "All Tasks"
+    contentBox.appendChild(projectTitle)
+
     // Iterate through array of objects to find matching project name property
     allTodos.forEach(element => {
 
@@ -52,5 +56,6 @@ export default function renderAll() {
         toDoContainer.appendChild(priorityRange)
         toDoContainer.appendChild(checkBox)
         contentBox.appendChild(toDoContainer)
+
     })
 }

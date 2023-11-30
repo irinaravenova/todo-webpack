@@ -81,3 +81,6 @@ body {
 .todo-div:nth-child(odd) {
     background-color: rgb(168, 234, 234);
 }
+
+#addTodoForm:modal {
+}

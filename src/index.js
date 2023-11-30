@@ -9,13 +9,18 @@ import './style.css';
 // ** renderX_____.js functions are DOM manipulation modules
 
 // ** TEST TODOS ** //
-const testTask = createTodo('Today', 'Bake cakes', 'chocolate', 'tomorrow', 'high', 'n/a', true)
+const testTask = createTodo('Today', 'Bake cakes', 'chocolate', 'tomorrow', 'low', 'n/a', true)
 const testTask1 = createTodo('Tomorrow', 'Bake pies', 'chocolate', 'tomorrow', 'high', 'n/a', false)
 const testTask2 = createTodo('Yesterday', 'Bake brownies', 'chocolate', 'tomorrow', 'high', 'n/a', true)
 const testTask3 = createTodo('Today', 'Bake cookies', 'vanilla', 'tomorrow', 'low', 'n/a', true)
 const testProject = createProject('Today')
 const testProject1 = createProject('Tomorrow')
 const testProject2 = createProject('Yesterday')
+
+// localStorage.clear();
+
+
+
 
 // ** END TEST TODOS ** //
 
@@ -42,8 +47,11 @@ createNewTodo.addEventListener('click', () => {
 // On submission of toDoForm, create new toDo objection using Todo class constructor function
 document.getElementById('submit').addEventListener('click', function(e) {
     e.preventDefault()
-    // let newTodoObject = createTodo();
+    // let newTodoObject = createTodo(project, title, description, dueDate, priority, notes, checkList)
 
+    
+    // Close form
+    addTodoForm.close()
 })
 
 
