@@ -17,12 +17,8 @@ const testProject = createProject('Today')
 const testProject1 = createProject('Tomorrow')
 const testProject2 = createProject('Yesterday')
 
-// localStorage.clear();
-
-
-
-
 // ** END TEST TODOS ** //
+
 
 
 
@@ -47,9 +43,17 @@ createNewTodo.addEventListener('click', () => {
 // On submission of toDoForm, create new toDo objection using Todo class constructor function
 document.getElementById('submit').addEventListener('click', function(e) {
     e.preventDefault()
-    // let newTodoObject = createTodo(project, title, description, dueDate, priority, notes, checkList)
+
+    // ** Create variables that hold the input values
+    // ** Then use those variables to instatiate createTodo function
+    // ** Call render todos and Alltodos functions to update page
+
+    let newTodoObject = createTodo(project, title, description, dueDate, priority, notes, checkList)
 
     
+
+
+
     // Close form
     addTodoForm.close()
 })
@@ -71,12 +75,6 @@ createProjectButton.addEventListener('click', () => {
 })
 
 
-
-
-
-
-
-
 renderAll()
 
 // Lists all todos as default upon intial page load
@@ -94,15 +92,12 @@ listAllTodos.addEventListener('click', (e) => {
 renderProjects()
 renderTodos()
 
+//console.logs title of objects within localstorage successfully
+for (var i = 0; i < localStorage.length; i++){
+   let obj = JSON.parse(localStorage.getItem(localStorage.key(i)));
+    console.log(obj.title)
 
-
-
-
-
-
-
-
-
+}
 
 
 

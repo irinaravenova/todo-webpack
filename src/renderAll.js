@@ -42,7 +42,7 @@ export default function renderAll() {
 
         let option3 = document.createElement("option")
         option3.value = 3;
-        option3.text = "High"
+        option3.text = "Low"
         priorityRange.options.add(option3)
 
         // Delete button
