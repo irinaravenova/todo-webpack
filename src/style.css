@@ -81,6 +81,36 @@ body {
 .todo-div:nth-child(odd) {
     background-color: rgb(168, 234, 234);
 }
+form > .form-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    padding: 10px;
+}
 
 #addTodoForm:modal {
+    width: 50%;
+    height: 65%;
+    background-color: rgb(206, 244, 244);
+    border-style: none;
+    padding:30px;
+    border-radius: 10px;
 }
+
+#addTodoForm:modal > form {
+    display: grid;
+
+}
+#addTodoForm:modal > form > input {
+    border-style: none;
+    height: 30px;
+    margin-bottom: 15px;
+    border-radius: 3px;
+}
+
+.modal-buttons {
+    border-style: none;
+    border-radius: 5px;
+    padding: 10px 20px 10px 20px;
+}
+

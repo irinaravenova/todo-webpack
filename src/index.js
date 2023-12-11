@@ -1,6 +1,7 @@
 import createTodo from "./createTodo";
-import allTodos from "./createTodo";
+import { allTodos } from "./createTodo";
 import createProject from "./createProject";
+import { projectList } from "./createProject"
 import renderProjects from "./renderProjects";
 import renderTodos from "./renderTodos";
 import renderAll from "./renderAll";
@@ -19,6 +20,13 @@ const testProject2 = createProject('Yesterday')
 
 // ** END TEST TODOS ** //
 
+// Render project list as options on create new todo form
+let projectSelect = document.getElementById("project")
+for (let i = 0; i < projectList.length; i++) {
+    let option = document.createElement("option")
+    option.textContent = projectList[i]
+    projectSelect.appendChild(option)
+}
 
 
 
@@ -48,9 +56,24 @@ document.getElementById('submit').addEventListener('click', function(e) {
     // ** Then use those variables to instatiate createTodo function
     // ** Call render todos and Alltodos functions to update page
 
-    let newTodoObject = createTodo(project, title, description, dueDate, priority, notes, checkList)
 
-    
+
+
+    let project = document.getElementById('project').value
+
+
+
+
+    let title = document.getElementById('title').value
+    let description = document.getElementById('description').value
+    let dueDate = document.getElementById('duedate').value
+    let priority = document.getElementById('priority').value
+    let notes = document.getElementById('notes').value
+    let checkList = document.getElementById('checklist').value
+    let newTodoObject = createTodo(project, title, description, dueDate, priority, notes, checkList)
+    console.log(newTodoObject)
+    allTodos.push(newTodoObject)
+    renderAll()
 
 
 
@@ -100,9 +123,7 @@ for (var i = 0; i < localStorage.length; i++){
 }
 
 
-
-
-
+console.log(projectList)
 
 
 

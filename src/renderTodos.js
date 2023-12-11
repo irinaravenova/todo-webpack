@@ -52,11 +52,9 @@ export default function renderTodos() {
                     option3.text = "Low"
                     priorityRange.options.add(option3)
 
-
                     // Checkbox to toggle completion of task
                     const checkBox = document.createElement('INPUT')
                     checkBox.setAttribute("type", "checkbox")
-
 
                     toDoContainer.appendChild(toDoTitle)
                     toDoContainer.appendChild(toDoDescription)
@@ -68,3 +66,5 @@ export default function renderTodos() {
         })
     })
 }
+
+
