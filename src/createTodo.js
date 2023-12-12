@@ -18,7 +18,7 @@ class ToDo {
 export default function createTodo(project, title, description, dueDate, priority, notes, checkList) {
     const newTodo = new ToDo(project, title, description, dueDate, priority, notes, checkList)
     allTodos.push(newTodo)    
-    localStorage.setItem(counter, JSON.stringify(newTodo))
+    localStorage.setItem((localStorage.length), JSON.stringify(newTodo))
     counter++
     return newTodo
 }

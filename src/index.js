@@ -32,10 +32,11 @@ for (let i = 0; i < projectList.length; i++) {
 
 // Get DOM elements
 const sidebar = document.querySelector('.sidebar')
+const sidebarSub = document.querySelector('.sidebar-sub')
 const header = document.querySelector('.header')
 const content = document.querySelector('.content')
 const addTodoForm = document.getElementById('addTodoForm')
-
+const addProjectForm = document.getElementById('add-project-form')
 
 
 // Create New Task button
@@ -49,7 +50,7 @@ createNewTodo.addEventListener('click', () => {
 })
 
 // On submission of toDoForm, create new toDo objection using Todo class constructor function
-document.getElementById('submit').addEventListener('click', function(e) {
+document.getElementById('submit-todo').addEventListener('click', function(e) {
     e.preventDefault()
 
     // ** Create variables that hold the input values
@@ -76,7 +77,6 @@ document.getElementById('submit').addEventListener('click', function(e) {
     renderAll()
 
 
-
     // Close form
     addTodoForm.close()
 })
@@ -90,11 +90,18 @@ const createProjectButton = document.createElement('button')
 createProjectButton.className = "create-project-button"
 createProjectButton.innerHTML = "Create Project"
 sidebar.appendChild(createProjectButton)
+
 createProjectButton.addEventListener('click', () => {
-    // Render form dialog box and call create Project function onSubmit
+    addProjectForm.showModal()
+})
 
-
-
+document.getElementById("submit-project").addEventListener('click', function(e) {
+    e.preventDefault()
+    let newProjectInput = document.getElementById('project-entry').value
+    projectList.push(newProjectInput)
+    addProjectForm.close()
+    sidebar.replaceChildren()
+    renderProjects()
 })
 
 
@@ -124,7 +131,6 @@ for (var i = 0; i < localStorage.length; i++){
 
 
 console.log(projectList)
-
 
 
 

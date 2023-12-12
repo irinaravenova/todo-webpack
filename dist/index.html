@@ -35,16 +35,35 @@
             <input type="checkbox" name="checklist" id="checklist" />
                 <div class="form-buttons">
                     <button value="cancel" formmethod="dialog" class="modal-buttons">Cancel</button>
-                    <button value="default" type="submit" name="submit" formmethod="dialog" class="confirmBtn modal-buttons" id="submit">Add Task</button>
+                    <button value="default" type="submit" name="submit-todo" formmethod="dialog" class="confirmBtn modal-buttons" id="submit-todo">Add Task</button>
                 </div>
+        </form>
+    </dialog>
+
+    <dialog id="add-project-form">
+        <form action="" id="add-project-form">
+            <label for="create-project">Create New Project</label>
+            <input type="text" name="project-entry" id="project-entry">
+
+            <div class="form-buttons">
+                <button value="cancel" formmethod="dialog" class="modal-buttons">Cancel</button>
+                <button value="default" type="submit" name="submit-project" formmethod="dialog" class="confirmBtn modal-buttons" id="submit-project">Add Project</button>
+            </div>
         </form>
     </dialog>
 
 
 
 
+
+
+    
+
     <div class="sidebar">
         <h1 class="checkmate">CheckMate</h1>
+        <div class="sidebar-sub">
+            
+        </div>
     </div>
     <div class="header">
         <h2>You Got This</h2>

@@ -88,7 +88,8 @@ form > .form-buttons {
     padding: 10px;
 }
 
-#addTodoForm:modal {
+#addTodoForm:modal,
+#add-project-form:modal {
     width: 50%;
     height: 65%;
     background-color: rgb(206, 244, 244);
@@ -97,11 +98,13 @@ form > .form-buttons {
     border-radius: 10px;
 }
 
-#addTodoForm:modal > form {
+#addTodoForm:modal > form,
+#add-project-form:modal > form {
     display: grid;
 
 }
-#addTodoForm:modal > form > input {
+#addTodoForm:modal > form > input,
+#add-project-form:modal > form > input {
     border-style: none;
     height: 30px;
     margin-bottom: 15px;
