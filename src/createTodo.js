@@ -1,7 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
 let allTodos = [];
-let counter = 0
 
 
 // New toDo class constructor
@@ -21,7 +20,6 @@ export default function createTodo(project, title, description, dueDate, priorit
     const newTodo = new ToDo(project, title, description, dueDate, priority, notes, checkList)
     allTodos.push(newTodo)    
     localStorage.setItem(uuidv4(), JSON.stringify(newTodo))
-    counter++
     return newTodo
 }
 

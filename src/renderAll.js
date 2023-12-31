@@ -10,19 +10,34 @@ export default function renderAll() {
     projectTitle.innerHTML = "All Tasks"
     contentBox.appendChild(projectTitle)
 
-    // Iterate through array of objects to find matching project name property
-    allTodos.forEach(element => {
+    if (localStorage.length == 1 ) {
+        contentBox.appendChild(projectTitle)
+        return
+    }
 
-        // Create div container for the Todo object and assign class to it
+   else {
+    for (var i = 0; i < localStorage.length; i++){
+
+        let obj = JSON.parse(localStorage.getItem(localStorage.key(i)))
+        let key = localStorage.key(i)
+
+        if (key == "projectArray") {
+            continue
+        }
+
+       // Create div container for the Todo object and assign class to it
         const toDoContainer = document.createElement('div')
         toDoContainer.className = "todo-div"
 
-        // **** ToDo object render, still needs formatting ****
+        //   **** ToDo object render, still needs formatting ****
         const toDoTitle = document.createElement('p')
-        toDoTitle.innerHTML = `${element.title}`
+        toDoTitle.innerHTML = `${obj.title}`
+
+        const toDoProject = document.createElement('p')
+        toDoProject.innerHTML = `${obj.project}`
 
         const toDoDescription = document.createElement('p')
-        toDoDescription.innerHTML = `${element.description}`
+        toDoDescription.innerHTML = `${obj.description}`
 
         // Checkbox to toggle completion of task
         const checkBox = document.createElement('INPUT')
@@ -45,17 +60,12 @@ export default function renderAll() {
         option3.text = "Low"
         priorityRange.options.add(option3)
 
-        // Delete button
-        // const deleteTodo = document.createElement('button')
-        // deleteTodo.innerHTML = "X"
-
-        // Append new elements to toDo container
-        // toDoContainer.appendChild(deleteTodo)
         toDoContainer.appendChild(toDoTitle)
+        toDoContainer.appendChild(toDoProject)
         toDoContainer.appendChild(toDoDescription)
         toDoContainer.appendChild(priorityRange)
         toDoContainer.appendChild(checkBox)
         contentBox.appendChild(toDoContainer)
-
-    })
+    }
+   }
 }

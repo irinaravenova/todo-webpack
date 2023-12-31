@@ -32,11 +32,17 @@ body {
 
 .sidebar {
     grid-area: sidebar;
-    display: flex;
-    align-items: center;
-    flex-direction: column;
+    text-align: center;
     background-color: rgb(127, 207, 207);
 }
+
+.sidebar-sub-2 {
+    display: grid;
+    justify-items: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
 .checkmate {
     height: 50px;
     align-items: center;
@@ -48,9 +54,16 @@ body {
 .create-project-button {
     font-family: 'DM Serif Display';
     height: 50px;
-    border-style: dotted;
-    background-color: transparent;
+    border-style: none;
+    border-radius: 5px;
+    background-color: rgb(101, 178, 178);
     width: 80%;
+}
+
+button:hover {
+        background-color:rgb(151, 225, 225);
+        transition: 0.25s;
+        box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
 }
 
 .create-project-button,
@@ -69,9 +82,10 @@ body {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: 30% 45% auto;
-    border-style: dotted;
+    border-style: none;
     margin-bottom: 15px;
     padding: 5px;
+    border-radius: 5px;
 }
 
 .todo-div:nth-child(even) {
