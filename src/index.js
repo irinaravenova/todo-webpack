@@ -103,12 +103,5 @@ for (let i = 0; i < storedProjectArray.length; i++) {
         projectSelect.appendChild(option)
     }
    
-renderProjects()
 renderAll()
-
-
-
-
-
-
-
+renderProjects()

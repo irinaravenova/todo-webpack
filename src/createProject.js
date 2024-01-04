@@ -3,6 +3,7 @@ import renderProjects from "./renderProjects";
 let projectList = [];
 
 export default function createProject(name) {
+    
     const newProject = name
 
     if (localStorage.getItem("projectArray") === "") {
@@ -15,8 +16,6 @@ export default function createProject(name) {
         storedProjectArray.push(newProject)
         localStorage.setItem('projectArray', JSON.stringify(storedProjectArray))
     }
-
-   
     renderProjects()
 }
 

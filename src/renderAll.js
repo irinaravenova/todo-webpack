@@ -50,6 +50,9 @@ export default function renderAll() {
         option1.text = "High"
         priorityRange.options.add(option1)
 
+        const deleteButton = document.createElement('button')
+        deleteButton.innerHTML = "X"
+
         let option2 = document.createElement("option")
         option2.value = 2;
         option2.text = "Medium"
@@ -60,11 +63,12 @@ export default function renderAll() {
         option3.text = "Low"
         priorityRange.options.add(option3)
 
+        toDoContainer.appendChild(checkBox)
         toDoContainer.appendChild(toDoTitle)
         toDoContainer.appendChild(toDoProject)
         toDoContainer.appendChild(toDoDescription)
         toDoContainer.appendChild(priorityRange)
-        toDoContainer.appendChild(checkBox)
+        toDoContainer.appendChild(deleteButton)
         contentBox.appendChild(toDoContainer)
     }
    }

@@ -131,3 +131,13 @@ form > .form-buttons {
     padding: 10px 20px 10px 20px;
 }
 
+.project-header-div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.project-header-div > button {
+    width: 50px;
+    height: 25px;
+}

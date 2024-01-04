@@ -1,15 +1,11 @@
 import { allTodos } from "./createTodo";
 
+
+// Get project name passed in from renderProjects module function.
 export default function renderTodos(project) {
-    // Takes in project name and iterates through localstorage to find matches
-    // Based on array of matches, renders matching toDos to page
 
     const contentBox = document.querySelector('.content')
-    contentBox.replaceChildren()
-
-    const projectTitle = document.createElement('h1')
-    projectTitle.innerHTML = `${project}`
-    contentBox.appendChild(projectTitle)
+    // contentBox.replaceChildren()
 
     let matchingTodos = [];
 
@@ -56,11 +52,27 @@ export default function renderTodos(project) {
             const checkBox = document.createElement('INPUT')
             checkBox.setAttribute("type", "checkbox")
 
+            const deleteButton = document.createElement('button')
+            deleteButton.innerHTML = "X"
+            deleteButton.addEventListener('click', () => {
+                // Call deleteTodo(arg) function and pass in todoTitle as an arg
+                
+                // TODO
+                // Logging out the title of the clicked todo object.
+                console.log((JSON.parse(localStorage.getItem(localStorage.key(i)))).title)
+
+
+
+
+
+            })
+
+            toDoContainer.appendChild(checkBox)
             toDoContainer.appendChild(toDoTitle)
             toDoContainer.appendChild(toDoProject)
             toDoContainer.appendChild(toDoDescription)
             toDoContainer.appendChild(priorityRange)
-            toDoContainer.appendChild(checkBox)
+            toDoContainer.appendChild(deleteButton)
             contentBox.appendChild(toDoContainer)
         }
     }
