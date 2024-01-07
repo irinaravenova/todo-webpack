@@ -1,5 +1,6 @@
 import renderTodos from "./renderTodos";
 import deleteProject from "./deleteProject";
+import editProject from "./editProject";
 
 export default function renderProjects() {
 
@@ -41,21 +42,44 @@ export default function renderProjects() {
                     projectTitle.innerHTML = `${project}`
                     contentBox.appendChild(projectTitle)
 
+                    // Create "Edit" project button
+                    const editProjectButton = document.createElement('button')
+                    editProjectButton.innerHTML = "Edit"
+
                     // Create "X" delete button
                     const deleteProjectButton = document.createElement('button')
                     deleteProjectButton.innerHTML = "X"
+
+
+                    // Add event listener to edit project button which calls editProject module
+                    editProjectButton.addEventListener('click', () => {
+                     
+                        // Open edit project name form modal upon clicking edit button
+                        const editProjectForm = document.getElementById('edit-project-form')
+                        editProjectForm.showModal()
+
+                        // On submitting new project name, pass old project name and new project name 
+                        // to editProject() module function.
+                        document.getElementById("edit-project").addEventListener('click', function(e) {
+                            e.preventDefault()
+                            editProject(project, document.getElementById("new-project-name").value)
+                            editProjectForm.close()
+                            // location.reload()
+                        })
+
+                    })
+
 
                     // Add event listener to delete project button which calls deleteProject module.
                     deleteProjectButton.addEventListener('click', () => {
                         
                         // Pass project name to module
                         deleteProject(project)
-                        // console.log(project)
-
                     })
 
                     // And add them both to header div, then add header div to content box.
                     headerDiv.appendChild(projectTitle)
+                    headerDiv.appendChild(editProjectButton)
                     headerDiv.appendChild(deleteProjectButton)
                     contentBox.appendChild(headerDiv)
 

@@ -5,6 +5,7 @@ import { projectList } from "./createProject"
 import renderProjects from "./renderProjects";
 import renderAll from "./renderAll";
 import './style.css';
+import editProject from "./editProject";
 
 // Checks for empty localStorage
 // Creates a default projectArray that references "All" todos or todos with unspecified projects.
@@ -20,6 +21,7 @@ const header = document.querySelector('.header')
 const content = document.querySelector('.content')
 const addTodoForm = document.getElementById('addTodoForm')
 const addProjectForm = document.getElementById('add-project-form')
+
 
 // Create New Task button
 const createNewTodo = document.createElement('button')
@@ -47,7 +49,7 @@ createProjectButton.addEventListener('click', () => {
 })
 
 
-// Show todo form modal listener
+// Submit new todo form event listener
 document.getElementById('submit-todo').addEventListener('click', function(e) {
     e.preventDefault()
     let project = document.getElementById('project').value
@@ -63,6 +65,7 @@ document.getElementById('submit-todo').addEventListener('click', function(e) {
     addTodoForm.close()
 })
 
+// Submit new project form event listener
 document.getElementById("submit-project").addEventListener('click', function(e) {
     e.preventDefault()
     let newProjectName = document.getElementById('project-entry').value
@@ -72,15 +75,13 @@ document.getElementById("submit-project").addEventListener('click', function(e) 
         option.textContent = newProjectName
         projectSelect.appendChild(option)
         addProjectForm.close()
-        // renderAll()
-        // renderTodos()
-        // renderProjects()
     }
     else {
         alert("Project already exists.")
         return
     }
 })
+
 
 // Lists all todos as default upon intial page load
 const listAllTodos = document.createElement('button')
