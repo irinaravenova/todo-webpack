@@ -1,5 +1,6 @@
 export default function editProject(project, newProjectName) {
 
+    // Test passing of variables to module.
     // console.log(project)
     // console.log(newProjectName)
 
@@ -7,8 +8,7 @@ export default function editProject(project, newProjectName) {
     const workingArray = JSON.parse(localStorage.getItem("projectArray"))
     console.log(workingArray)
 
-    let keysToUpdate = []
-
+    
     // Iterate through projectArray from LS...
     for (let i = 0; i < workingArray.length; i++) {
 
@@ -20,11 +20,8 @@ export default function editProject(project, newProjectName) {
             const updatedProjectArray = workingArray.toSpliced(i, 1, newProjectName)
             console.log(updatedProjectArray)
 
-            // TODO - Set this updated project array to localstorage.
-
-
-
-
+            // Set updated project array to local storage.
+            localStorage.setItem("projectArray", JSON.stringify(updatedProjectArray))
 
             // Break out of the loop.
             break 
@@ -35,7 +32,12 @@ export default function editProject(project, newProjectName) {
     // Iterate through localStorage to find todos with matching old project names.
     for (let j = 0; j < localStorage.length; j++) {
 
+        let objectKey = localStorage.key(j)
         let toDoObject = JSON.parse(localStorage.getItem(localStorage.key(j)))
+
+        // Test for object and keys being assigned correctly.
+        // console.log(toDoObject)     
+        // console.log(objectKey)
 
         // If the localstorage object is the projectArray, pass it.
         if (localStorage.key(j) == "projectArray") {
@@ -46,23 +48,12 @@ export default function editProject(project, newProjectName) {
         else if (toDoObject.project === project) {
             toDoObject.project = `${newProjectName}`  
             
-            // TODO - change project names of todo objects and update them in localstorage.
-
-
-
-
-            console.log(toDoObject)     
+            // Change project names of todo objects and update them in localstorage.
+            localStorage.setItem(objectKey, JSON.stringify(toDoObject))
 
         }
-        
 
-
-
-
-
-
-        
+        // Reload window to display new project names.
+        location.reload()
     }
-
-
 }
