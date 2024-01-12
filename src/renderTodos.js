@@ -54,16 +54,13 @@ export default function renderTodos(project) {
 
             const deleteButton = document.createElement('button')
             deleteButton.innerHTML = "X"
-            deleteButton.addEventListener('click', () => {
-                // Call deleteTodo(arg) function and pass in todoTitle as an arg
-                
-                // TODO
-                // Logging out the title of the clicked todo object.
-                console.log((JSON.parse(localStorage.getItem(localStorage.key(i)))).title)
+            deleteButton.addEventListener('click', () => {                
 
+                // Removes todo object from localstorage using the key
+                localStorage.removeItem(localStorage.key(i))
 
-
-
+                // Removes the todo Div container from page
+                contentBox.removeChild(toDoContainer)
 
             })
 

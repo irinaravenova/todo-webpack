@@ -25,51 +25,65 @@ export default function renderAll() {
             continue
         }
 
+        else {
+
        // Create div container for the Todo object and assign class to it
-        const toDoContainer = document.createElement('div')
-        toDoContainer.className = "todo-div"
+       const toDoContainer = document.createElement('div')
+       toDoContainer.className = "todo-div"
 
-        //   **** ToDo object render, still needs formatting ****
-        const toDoTitle = document.createElement('p')
-        toDoTitle.innerHTML = `${obj.title}`
+       //   **** ToDo object render, still needs formatting ****
+       const toDoTitle = document.createElement('p')
+       toDoTitle.innerHTML = `${obj.title}`
 
-        const toDoProject = document.createElement('p')
-        toDoProject.innerHTML = `${obj.project}`
+       const toDoProject = document.createElement('p')
+       toDoProject.innerHTML = `${obj.project}`
 
-        const toDoDescription = document.createElement('p')
-        toDoDescription.innerHTML = `${obj.description}`
+       const toDoDescription = document.createElement('p')
+       toDoDescription.innerHTML = `${obj.description}`
 
-        // Checkbox to toggle completion of task
-        const checkBox = document.createElement('INPUT')
-        checkBox.setAttribute("type", "checkbox")
+       // Checkbox to toggle completion of task
+       const checkBox = document.createElement('INPUT')
+       checkBox.setAttribute("type", "checkbox")
 
-        // Priority range dropdown menu
-        const priorityRange = document.createElement('select')
-        let option1 = document.createElement("option")
-        option1.value =1;
-        option1.text = "High"
-        priorityRange.options.add(option1)
+       // Priority range dropdown menu
+       const priorityRange = document.createElement('select')
+       let option1 = document.createElement("option")
+       option1.value =1;
+       option1.text = "High"
+       priorityRange.options.add(option1)
 
-        const deleteButton = document.createElement('button')
-        deleteButton.innerHTML = "X"
+       let option2 = document.createElement("option")
+       option2.value = 2;
+       option2.text = "Medium"
+       priorityRange.options.add(option2)
 
-        let option2 = document.createElement("option")
-        option2.value = 2;
-        option2.text = "Medium"
-        priorityRange.options.add(option2)
+       let option3 = document.createElement("option")
+       option3.value = 3;
+       option3.text = "Low"
+       priorityRange.options.add(option3)
 
-        let option3 = document.createElement("option")
-        option3.value = 3;
-        option3.text = "Low"
-        priorityRange.options.add(option3)
+       const deleteButton = document.createElement('button')
+       deleteButton.innerHTML = "X"
+       deleteButton.addEventListener('click', () => {                
 
-        toDoContainer.appendChild(checkBox)
-        toDoContainer.appendChild(toDoTitle)
-        toDoContainer.appendChild(toDoProject)
-        toDoContainer.appendChild(toDoDescription)
-        toDoContainer.appendChild(priorityRange)
-        toDoContainer.appendChild(deleteButton)
-        contentBox.appendChild(toDoContainer)
+           // Removes todo object from localstorage using the key
+           localStorage.removeItem(key)
+
+           // Removes the todo Div container from page
+           contentBox.removeChild(toDoContainer)
+
+       })
+
+       toDoContainer.appendChild(checkBox)
+       toDoContainer.appendChild(toDoTitle)
+       toDoContainer.appendChild(toDoProject)
+       toDoContainer.appendChild(toDoDescription)
+       toDoContainer.appendChild(priorityRange)
+       toDoContainer.appendChild(deleteButton)
+       contentBox.appendChild(toDoContainer)
+        }
+
+
     }
    }
 }

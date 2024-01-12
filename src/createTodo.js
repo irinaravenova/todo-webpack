@@ -2,7 +2,6 @@ import { v4 as uuidv4 } from 'uuid';
 
 let allTodos = [];
 
-
 // New toDo class constructor
 class ToDo {
     constructor(project, title, description, dueDate, priority, notes, checkList) {

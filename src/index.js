@@ -5,7 +5,6 @@ import { projectList } from "./createProject"
 import renderProjects from "./renderProjects";
 import renderAll from "./renderAll";
 import './style.css';
-import editProject from "./editProject";
 
 // Checks for empty localStorage
 // Creates a default projectArray that references "All" todos or todos with unspecified projects.

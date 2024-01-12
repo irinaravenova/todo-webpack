@@ -1,5 +1,5 @@
 import renderTodos from "./renderTodos";
-import deleteProject from "./deleteProject";
+import deleteProject from "./deleteProject"
 import editProject from "./editProject";
 
 export default function renderProjects() {
