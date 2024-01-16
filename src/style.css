@@ -19,6 +19,7 @@ body {
                         "sidebar content"
 }
 
+
 .header{
     display: flex;
     font-style: italic;
@@ -81,11 +82,20 @@ button:hover {
 .todo-div {
     display: grid;
     grid-auto-flow: column;
-    grid-template-columns: 30% 45% auto;
     border-style: none;
-    margin-bottom: 15px;
+    margin-bottom: 35px;
     padding: 5px;
     border-radius: 5px;
+    height: 100px;
+    width: 100%;
+
+
+
+}
+
+.todo-div > button, select {
+    width: 70px;
+    height: 25px;
 }
 
 .todo-div:nth-child(even) {
@@ -103,7 +113,9 @@ form > .form-buttons {
 }
 
 #addTodoForm:modal,
-#add-project-form:modal {
+#add-project-form:modal,
+#edit-project-form:modal,
+#edit-todo-form:modal {
     width: 50%;
     height: 65%;
     background-color: rgb(206, 244, 244);

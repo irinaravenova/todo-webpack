@@ -7,6 +7,7 @@
 </head>
 <body>
 
+    <!-- Add todo form -->
     <dialog id="addTodoForm">
         <form action="" id="addTodoForm">
             <label for="project">Project:</label>
@@ -31,15 +32,16 @@
             <label for="notes">Notes:</label>
             <input type="text" name="notes" id="notes">
 
-            <label for="checklist">Completed Status:</label>
-            <input type="checkbox" name="checklist" id="checklist" />
-                <div class="form-buttons">
+            <input type="hidden" name="checklist" id="checklist" />
+
+            <div class="form-buttons">
                     <button value="cancel" formmethod="dialog" class="modal-buttons">Cancel</button>
                     <button value="default" type="submit" name="submit-todo" formmethod="dialog" class="confirmBtn modal-buttons" id="submit-todo">Add Task</button>
                 </div>
         </form>
     </dialog>
 
+    <!-- Add project form -->
     <dialog id="add-project-form">
         <form action="" id="add-project-form">
             <label for="project-entry">Create New Project</label>
@@ -52,6 +54,7 @@
         </form>
     </dialog>
 
+    <!-- Edit Project Form -->
     <dialog id="edit-project-form">
         <form action="" id="edit-project-form">
             <label for="new-project-name">Edit Project Name</label>
@@ -64,8 +67,40 @@
         </form>
     </dialog>
 
+    <!-- Edit todo form -->
+    <dialog id="edit-todo-form">
+        <form action="" id="edit-todo-form">
+            <label for="new-title">Edit Title:</label>
+            <input type="text" name="new-title" id="new-title">
 
+            <label for="new-project">Edit Project:</label>
+            <select name="new-project" id="new-project" autocomplete="off" >
+            
+                </select>
 
+            <label for="new-description">Edit Description:</label>
+            <input type="text" name="new-description" id="new-description">
+
+            <label for="new-notes">Edit Notes:</label>
+            <input type="text" name="new-notes" id="new-notes">
+
+            <label for="new-date">Edit Date:</label>
+            <input type="date" name="new-date" id="new-date">
+
+            <label for="new-priority">Priority:</label>
+            <select name="new-priority" id="new-priority">
+                <option value="high">High</option>
+                <option value="medium">Medium</option>
+                <option value="low">Low</option>
+                </select>
+
+            <div class="form-buttons">
+                <button value="cancel" formmethod="dialog" class="modal-buttons">Cancel</button>
+                <button value="default" type="submit" name="submit-new-project-name" formmethod="dialog" class="confirmBtn modal-buttons" id="edit-todo">Update Todo</button>
+            </div>
+
+        </form>
+    </dialog>
 
     
 

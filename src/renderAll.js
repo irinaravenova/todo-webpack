@@ -1,5 +1,3 @@
-import { allTodos } from "./createTodo"
-
 export default function renderAll() { 
 
     // First clear contents of whatever is in the main content area (avoids repetition of object listing)
@@ -10,80 +8,94 @@ export default function renderAll() {
     projectTitle.innerHTML = "All Tasks"
     contentBox.appendChild(projectTitle)
 
-    if (localStorage.length == 1 ) {
-        contentBox.appendChild(projectTitle)
-        return
-    }
 
-   else {
-    for (var i = 0; i < localStorage.length; i++){
-
-        let obj = JSON.parse(localStorage.getItem(localStorage.key(i)))
-        let key = localStorage.key(i)
-
-        if (key == "projectArray") {
+    for (let i = 0; i < localStorage.length; i++) {
+        if (localStorage.key(i) == "projectArray") {
             continue
         }
-
         else {
+            let key = localStorage.key(i)
+            let object = JSON.parse(localStorage.getItem(key))
+           
+            console.log(key)
+            console.log(object)
 
-       // Create div container for the Todo object and assign class to it
-       const toDoContainer = document.createElement('div')
-       toDoContainer.className = "todo-div"
+            const checkBox = document.createElement('INPUT')
+            checkBox.setAttribute("type", "checkbox")
 
-       //   **** ToDo object render, still needs formatting ****
-       const toDoTitle = document.createElement('p')
-       toDoTitle.innerHTML = `${obj.title}`
+            if ((object.checkList).toString() == "true") {
+                checkBox.checked = true
+            }
+            else if ((object.checkList).toString() == "false") {
+                checkBox.checked = false
+            }
 
-       const toDoProject = document.createElement('p')
-       toDoProject.innerHTML = `${obj.project}`
+            // On click of checkbox,
+            checkBox.addEventListener('click', () => {
 
-       const toDoDescription = document.createElement('p')
-       toDoDescription.innerHTML = `${obj.description}`
+                // If it's true, make it false. 
+                if (object.checkList == 'true') {
+                    console.log('make me false! ')
+                    object.checkList = 'false'
+                    localStorage.setItem(localStorage.key(i), JSON.stringify(object))
+                }
+                    // And vice versa.
+                    else if (object.checkList == 'false') {
+                    console.log('make me true!')
+                    object.checkList = 'true'
+                    localStorage.setItem(localStorage.key(i), JSON.stringify(object))
+                }
+            })
 
-       // Checkbox to toggle completion of task
-       const checkBox = document.createElement('INPUT')
-       checkBox.setAttribute("type", "checkbox")
+            const toDoContainer = document.createElement('div')
+            toDoContainer.className = "todo-div"
 
-       // Priority range dropdown menu
-       const priorityRange = document.createElement('select')
-       let option1 = document.createElement("option")
-       option1.value =1;
-       option1.text = "High"
-       priorityRange.options.add(option1)
+            // **** ToDo object render, still needs formatting ****
+            const toDoTitle = document.createElement('p')
+            toDoTitle.innerHTML = `${object.title}`
+            
+            const toDoProject = document.createElement('p')
+            toDoProject.innerHTML = `${object.project}`
 
-       let option2 = document.createElement("option")
-       option2.value = 2;
-       option2.text = "Medium"
-       priorityRange.options.add(option2)
+            const toDoDescription = document.createElement('p')
+            toDoDescription.innerHTML = `${object.description}`
 
-       let option3 = document.createElement("option")
-       option3.value = 3;
-       option3.text = "Low"
-       priorityRange.options.add(option3)
+            const todoDueDate = document.createElement('date')
+            todoDueDate.innerHTML = `${(object.dueDate).toString()}`
 
-       const deleteButton = document.createElement('button')
-       deleteButton.innerHTML = "X"
-       deleteButton.addEventListener('click', () => {                
+            const toDoNotes = document.createElement('p')
+            toDoNotes.innerHTML = `${object.notes}`
 
-           // Removes todo object from localstorage using the key
-           localStorage.removeItem(key)
-
-           // Removes the todo Div container from page
-           contentBox.removeChild(toDoContainer)
-
-       })
-
-       toDoContainer.appendChild(checkBox)
-       toDoContainer.appendChild(toDoTitle)
-       toDoContainer.appendChild(toDoProject)
-       toDoContainer.appendChild(toDoDescription)
-       toDoContainer.appendChild(priorityRange)
-       toDoContainer.appendChild(deleteButton)
-       contentBox.appendChild(toDoContainer)
-        }
+            // Priority range dropdown menu
+            const priorityRange = document.createElement('p')
+            priorityRange.innerHTML = `${'Priority: ' + object.priority}`
 
 
+            const editButton = document.createElement('button')
+            editButton.innerHTML = "Edit"
+
+            const deleteButton = document.createElement('button')
+            deleteButton.innerHTML = "X"
+
+            deleteButton.addEventListener('click', () => {                
+
+                console.log(key)
+                console.log(object)
+
+                localStorage.removeItem(key)
+                contentBox.removeChild(toDoContainer)
+
+            })
+
+            toDoContainer.appendChild(checkBox)
+            toDoContainer.appendChild(toDoTitle)
+            toDoContainer.appendChild(toDoProject)
+            toDoContainer.appendChild(toDoDescription)
+            toDoContainer.appendChild(todoDueDate)
+            toDoContainer.appendChild(priorityRange)
+            toDoContainer.appendChild(editButton)
+            toDoContainer.appendChild(deleteButton)
+            contentBox.appendChild(toDoContainer)
+        }        
     }
-   }
 }

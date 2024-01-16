@@ -64,7 +64,6 @@ export default function renderProjects() {
                             e.preventDefault()
                             editProject(project, document.getElementById("new-project-name").value)
                             editProjectForm.close()
-                            // location.reload()
                         })
 
                     })
@@ -90,8 +89,6 @@ export default function renderProjects() {
                 })
                 
                 sidebarSub.appendChild(projectButton)
-
-
             }
         })
     }

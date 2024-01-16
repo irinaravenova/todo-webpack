@@ -13,6 +13,7 @@ if (localStorage.getItem("projectArray") === null) {
     renderProjects()
 }
 
+
 // Get DOM elements
 const sidebar = document.querySelector('.sidebar')
 const sidebarSub = document.querySelector('.sidebar-sub-1')
@@ -94,14 +95,28 @@ listAllTodos.addEventListener('click', (e) => {
 })
 
 
-// Render project list as options on create new todo form
+// ** The following loops are added in index.js so that they are not...
+// ...executed more than once after page rendering.
+// If they are placed in the function module event listeners, they
+// start overpopulating the select options on project button clicking.
+
+// Render project list as options on create new todo form, 
 let projectSelect = document.getElementById("project")
+let projectSelectNew = document.getElementById('new-project')
 let storedProjectArray = JSON.parse(localStorage.getItem("projectArray"))
+
 for (let i = 0; i < storedProjectArray.length; i++) {
         let option = document.createElement("option")
         option.textContent = storedProjectArray[i]
         projectSelect.appendChild(option)
     }
    
+// And edit todo form. 
+for (let i = 0; i < storedProjectArray.length; i++) {
+    let option = document.createElement("option")
+    option.textContent = storedProjectArray[i]
+    projectSelectNew.appendChild(option)
+}
+
 renderAll()
 renderProjects()

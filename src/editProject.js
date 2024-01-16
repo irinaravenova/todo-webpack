@@ -1,3 +1,6 @@
+import renderProjects from "./renderProjects"
+import renderTodos from "./renderTodos"
+
 export default function editProject(project, newProjectName) {
 
     // Test passing of variables to module.
@@ -22,6 +25,66 @@ export default function editProject(project, newProjectName) {
 
             // Set updated project array to local storage.
             localStorage.setItem("projectArray", JSON.stringify(updatedProjectArray))
+
+            // Clear content box 
+            const contentBox = document.querySelector('.content')
+            contentBox.replaceChildren()
+
+            // Create header div to hold project name and delete button, 
+            const headerDiv = document.createElement('div')
+            headerDiv.className = "project-header-div"
+
+            // Create header title using project title
+            const projectTitle = document.createElement('h1')
+            projectTitle.innerHTML = `${newProjectName}`
+            contentBox.appendChild(projectTitle)
+
+            // Create "Edit" project button
+            const editProjectButton = document.createElement('button')
+            editProjectButton.innerHTML = "Edit"
+
+            // Create "X" delete button
+            const deleteProjectButton = document.createElement('button')
+            deleteProjectButton.innerHTML = "X"
+
+
+            // Add event listener to edit project button which calls editProject module
+            editProjectButton.addEventListener('click', () => {
+            
+                // Open edit project name form modal upon clicking edit button
+                const editProjectForm = document.getElementById('edit-project-form')
+                editProjectForm.showModal()
+
+                // On submitting new project name, pass old project name and new project name 
+                // to editProject() module function.
+                document.getElementById("edit-project").addEventListener('click', function(e) {
+                    e.preventDefault()
+                    editProject(project, document.getElementById("new-project-name").value)
+                    editProjectForm.close()
+                    
+                })
+
+
+
+            })
+
+            // Add event listener to delete project button which calls deleteProject module.
+            deleteProjectButton.addEventListener('click', () => {
+                
+                // Pass project name to module
+                deleteProject(project)
+
+                
+
+            })
+
+            // And add them both to header div, then add header div to content box.
+            headerDiv.appendChild(projectTitle)
+            headerDiv.appendChild(editProjectButton)
+            headerDiv.appendChild(deleteProjectButton)
+            contentBox.appendChild(headerDiv)
+
+            
 
             // Break out of the loop.
             break 
@@ -52,8 +115,8 @@ export default function editProject(project, newProjectName) {
             localStorage.setItem(objectKey, JSON.stringify(toDoObject))
 
         }
-
-        // Reload window to display new project names.
-        location.reload()
     }
+
+    location.reload()
+    renderTodos(newProjectName)    
 }

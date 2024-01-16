@@ -5,13 +5,13 @@ let allTodos = [];
 // New toDo class constructor
 class ToDo {
     constructor(project, title, description, dueDate, priority, notes, checkList) {
-        this.project = project
         this.title = title
+        this.project = project
         this.description = description
         this.dueDate = dueDate
         this.priority = priority
         this.notes = notes
-        this.checkList = Boolean(checkList)   
+        this.checkList = "false"
     }
 }
 
