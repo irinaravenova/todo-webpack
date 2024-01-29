@@ -17,6 +17,7 @@ export default function createProject(name) {
         localStorage.setItem('projectArray', JSON.stringify(storedProjectArray))
     }
     renderProjects()
+    location.reload()
 }
 
 export { projectList }

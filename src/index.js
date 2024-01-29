@@ -14,6 +14,10 @@ if (localStorage.getItem("projectArray") === null) {
 }
 
 
+
+
+
+
 // Get DOM elements
 const sidebar = document.querySelector('.sidebar')
 const sidebarSub = document.querySelector('.sidebar-sub-1')
@@ -62,6 +66,10 @@ document.getElementById('submit-todo').addEventListener('click', function(e) {
     let newTodoObject = createTodo(project, title, description, dueDate, priority, notes, checkList)
     allTodos.push(newTodoObject)
     renderAll()
+    // Clear input values upon submission
+    let inputs = document.querySelectorAll("input")
+    inputs.forEach(input => input.value = "")
+    
     addTodoForm.close()
 })
 
@@ -74,13 +82,22 @@ document.getElementById("submit-project").addEventListener('click', function(e) 
         let option = document.createElement("option")
         option.textContent = newProjectName
         projectSelect.appendChild(option)
+
+        // Clear input after submission
+        let inputs = document.querySelectorAll("input")
+        inputs.forEach(input => input.value = "")
+
         addProjectForm.close()
+
     }
     else {
         alert("Project already exists.")
         return
     }
 })
+
+
+
 
 
 // Lists all todos as default upon intial page load

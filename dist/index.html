@@ -9,7 +9,7 @@
 
     <!-- Add todo form -->
     <dialog id="addTodoForm">
-        <form action="" id="addTodoForm">
+        <form action="" id="addTodoForm" class="forms">
             <label for="project">Project:</label>
             <select name="project" id="project" autocomplete="off" >
             
@@ -62,7 +62,7 @@
 
             <div class="form-buttons">
                 <button value="cancel" formmethod="dialog" class="modal-buttons">Cancel</button>
-                <button value="default" type="submit" name="submit-new-project-name" formmethod="dialog" class="confirmBtn modal-buttons" id="edit-project">Update Project Name</button>
+                <button value="default" type="submit" name="edit-project" formmethod="dialog" class="confirmBtn modal-buttons" id="edit-project">Update Project Name</button>
             </div>
         </form>
     </dialog>
@@ -96,7 +96,7 @@
 
             <div class="form-buttons">
                 <button value="cancel" formmethod="dialog" class="modal-buttons">Cancel</button>
-                <button value="default" type="submit" name="submit-new-project-name" formmethod="dialog" class="confirmBtn modal-buttons" id="edit-todo">Update Todo</button>
+                <button value="default" type="submit" name="edit-todo" formmethod="dialog" class="confirmBtn modal-buttons" id="edit-todo">Update Todo</button>
             </div>
 
         </form>
@@ -118,7 +118,8 @@
         <h2>You Got This</h2>
 
     </div>
-        
+        <div class="project-header" id="project-header">
+        </div>
     <div class="content">
     </div>
 

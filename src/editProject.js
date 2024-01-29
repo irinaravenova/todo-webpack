@@ -3,15 +3,10 @@ import renderTodos from "./renderTodos"
 
 export default function editProject(project, newProjectName) {
 
-    // Test passing of variables to module.
-    // console.log(project)
-    // console.log(newProjectName)
-
     // Get existing project array from localStorage
     const workingArray = JSON.parse(localStorage.getItem("projectArray"))
     console.log(workingArray)
 
-    
     // Iterate through projectArray from LS...
     for (let i = 0; i < workingArray.length; i++) {
 
@@ -61,6 +56,7 @@ export default function editProject(project, newProjectName) {
                     e.preventDefault()
                     editProject(project, document.getElementById("new-project-name").value)
                     editProjectForm.close()
+                    location.reload()
                     
                 })
 
@@ -73,7 +69,7 @@ export default function editProject(project, newProjectName) {
                 
                 // Pass project name to module
                 deleteProject(project)
-
+                location.reload()
                 
 
             })
@@ -117,6 +113,7 @@ export default function editProject(project, newProjectName) {
         }
     }
 
-    location.reload()
-    renderTodos(newProjectName)    
+
+    renderTodos(newProjectName) 
+      
 }

@@ -5,7 +5,11 @@ import editProject from "./editProject";
 export default function renderProjects() {
 
     const sidebarSub = document.querySelector('.sidebar-sub-2')
+    const projectHeader = document.getElementById('project-header')
+
+    // Clear page contents
     sidebarSub.replaceChildren()
+
 
     // If the project array is empty, log out 
     if (localStorage.getItem("projectArray") === "") {
@@ -29,18 +33,33 @@ export default function renderProjects() {
                 // When the project button in the sidebar is clicked, 
                 projectButton.addEventListener('click', () => {
 
+                    // Clear project header
+                    projectHeader.replaceChildren()
+
                     // Clear content box 
                     const contentBox = document.querySelector('.content')
                     contentBox.replaceChildren()
+                    
+                    
+
 
                     // Create header div to hold project name and delete button, 
-                    const headerDiv = document.createElement('div')
-                    headerDiv.className = "project-header-div"
+                    // const headerDiv = document.createElement('div')
+                    // headerDiv.className = "project-header-div"
+
+
+                    
+
+                    let projectTitle = document.createElement('h1')
+
+                    projectTitle.innerHTML = `${project}`
+                    projectHeader.appendChild(projectTitle)
+
 
                     // Create header title using project title
-                    const projectTitle = document.createElement('h1')
-                    projectTitle.innerHTML = `${project}`
-                    contentBox.appendChild(projectTitle)
+                    // const projectTitle = document.createElement('h1')
+                    // projectTitle.innerHTML = `${project}`
+                    // projectHeader.appendChild(projectTitle)
 
                     // Create "Edit" project button
                     const editProjectButton = document.createElement('button')
@@ -63,7 +82,7 @@ export default function renderProjects() {
                         document.getElementById("edit-project").addEventListener('click', function(e) {
                             e.preventDefault()
                             editProject(project, document.getElementById("new-project-name").value)
-                            editProjectForm.close()
+                            editProjectForm.close()                            
                         })
 
                     })
@@ -74,13 +93,15 @@ export default function renderProjects() {
                         
                         // Pass project name to module
                         deleteProject(project)
+                        location.reload()
+
                     })
 
                     // And add them both to header div, then add header div to content box.
-                    headerDiv.appendChild(projectTitle)
-                    headerDiv.appendChild(editProjectButton)
-                    headerDiv.appendChild(deleteProjectButton)
-                    contentBox.appendChild(headerDiv)
+                    // headerDiv.appendChild(projectTitle)
+                    projectHeader.appendChild(editProjectButton)
+                    projectHeader.appendChild(deleteProjectButton)
+                    // contentBox.appendChild(headerDiv)
 
                     // Then, pass project name to renderTodo function module,
                     renderTodos(project)

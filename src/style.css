@@ -14,13 +14,15 @@ body {
     display: grid;
     grid-auto-flow: column;
     grid-template-columns: minmax(200px, 1fr) 5fr;
-    grid-template-rows: 1fr 100%;
+    grid-template-rows: 1fr .5fr 100%;
     grid-template-areas: "sidebar header"
-                        "sidebar content"
+                            "sidebar project-header"
+                            "sidebar content"
+
 }
 
 
-.header{
+.header {
     display: flex;
     font-style: italic;
     grid-area: header;
@@ -29,6 +31,15 @@ body {
     align-items: center;
     background-color: rgb(127, 207, 207);
     box-shadow: 0 4px 2px -2px rgb(0, 0, 0, .25);
+}
+
+.project-header {
+    display: flex;
+    height: 50px;
+    grid-area: project-header;
+    padding: 15px;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .sidebar {
@@ -61,7 +72,8 @@ body {
     width: 80%;
 }
 
-button:hover {
+button:hover,
+.todo-div-buttons > button:hover {
         background-color:rgb(151, 225, 225);
         transition: 0.25s;
         box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
@@ -74,28 +86,44 @@ button:hover {
 
 .content {
     grid-area: content;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
     padding-left: 15px;
     padding-right: 15px;
     padding-top: 15px;
+    gap: 15px;
 }
 
 .todo-div {
-    display: grid;
-    grid-auto-flow: column;
+    display: flex;
+    flex-direction: column;
     border-style: none;
+    align-items: center;
     margin-bottom: 35px;
     padding: 5px;
     border-radius: 5px;
-    height: 100px;
-    width: 100%;
-
-
-
+    height: 100%;
+    max-height: 350px;
+    width: auto;
 }
 
-.todo-div > button, select {
+
+
+input[type=checkbox] {
+    width:25px;
+    height: 25px;
+    border-radius: 0.15em;
+    border-style: none;
+}
+
+.todo-div-buttons > button,
+.project-header > button {
     width: 70px;
     height: 25px;
+    border-radius: 10px;
+    border-style: none;
+    background-color: rgb(101, 178, 178);
+    font-family: 'DM Serif Display';
 }
 
 .todo-div:nth-child(even) {
@@ -105,12 +133,14 @@ button:hover {
 .todo-div:nth-child(odd) {
     background-color: rgb(168, 234, 234);
 }
-form > .form-buttons {
+form > .form-buttons,
+.todo-div-buttons {
     display: flex;
     justify-content: center;
     gap: 15px;
     padding: 10px;
 }
+
 
 #addTodoForm:modal,
 #add-project-form:modal,
@@ -125,7 +155,9 @@ form > .form-buttons {
 }
 
 #addTodoForm:modal > form,
-#add-project-form:modal > form {
+#add-project-form:modal > form,
+#edit-project-form:modal > form,
+#edit-todo-form:modal > form {
     display: grid;
 
 }
@@ -152,4 +184,8 @@ form > .form-buttons {
 .project-header-div > button {
     width: 50px;
     height: 25px;
+}
+
+h1 {
+    display: block;
 }
