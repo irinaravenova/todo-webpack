@@ -5,6 +5,7 @@ import { projectList } from "./createProject"
 import renderProjects from "./renderProjects";
 import renderAll from "./renderAll";
 import './style.css';
+import { format } from 'date-fns';
 
 // Checks for empty localStorage
 // Creates a default projectArray that references "All" todos or todos with unspecified projects.
@@ -137,3 +138,19 @@ for (let i = 0; i < storedProjectArray.length; i++) {
 
 renderAll()
 renderProjects()
+
+const exampleDate = '2024-01-30'
+let newExample = exampleDate.replaceAll("-", '/')
+console.log(newExample)
+
+
+const date1 = format(
+    `${newExample}`,
+    'MMMM d yyyy',
+    new Date()
+)
+
+console.log(date1)
+
+
+

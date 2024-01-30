@@ -1,4 +1,5 @@
 import renderTodos from "./renderTodos"
+import { format } from "date-fns";
 
 export default function renderAll() { 
 
@@ -75,8 +76,15 @@ export default function renderAll() {
             const toDoDescription = document.createElement('p')
             toDoDescription.innerHTML = `${object.description}`
 
+
+            const date1 = format(
+                `${((object.dueDate).toString()).replaceAll("-", '/')}`,
+                'MMMM d yyyy',
+                new Date()
+            )
+
             const todoDueDate = document.createElement('date')
-            todoDueDate.innerHTML = `${(object.dueDate).toString()}`
+            todoDueDate.innerHTML = `${date1}`
 
             const toDoNotes = document.createElement('p')
             toDoNotes.innerHTML = `${object.notes}`
