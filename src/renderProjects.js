@@ -33,6 +33,8 @@ export default function renderProjects() {
                 // When the project button in the sidebar is clicked, 
                 projectButton.addEventListener('click', () => {
 
+                    console.log("clicked")
+
                     // Clear project header
                     projectHeader.replaceChildren()
 

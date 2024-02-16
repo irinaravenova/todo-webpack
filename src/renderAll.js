@@ -37,8 +37,15 @@ export default function renderAll() {
             const toDoButtonDivs = document.createElement('div')
             toDoButtonDivs.className = "todo-div-buttons"
 
+            // Create checkbox container to facilitate custom styling
+            const checkContainer = document.createElement('div')
+            checkContainer.className = "checkbox-container"
+            checkContainer.style.justifyContent = 'center'
+
             const checkBox = document.createElement('INPUT')
             checkBox.setAttribute("type", "checkbox")
+
+            checkContainer.appendChild(checkBox)
 
             if ((object.checkList).toString() == "true") {
                 checkBox.checked = true
@@ -67,6 +74,7 @@ export default function renderAll() {
             // **** ToDo object render, still needs formatting ****
             const toDoTitle = document.createElement('p')
             toDoTitle.style.fontSize = "xx-large"
+            toDoTitle.style.textAlign = "center"
             toDoTitle.innerHTML = `${object.title}`
             
             const toDoProject = document.createElement('p')
@@ -169,11 +177,13 @@ export default function renderAll() {
 
             })
 
-            toDoContainer.appendChild(checkBox)
+            
             toDoContainer.appendChild(toDoTitle)
+            toDoContainer.appendChild(checkContainer)
             toDoContainer.appendChild(toDoProject)
             toDoContainer.appendChild(toDoDescription)
             toDoContainer.appendChild(todoDueDate)
+            toDoContainer.appendChild(toDoNotes)
             toDoContainer.appendChild(priorityRange)
             toDoButtonDivs.appendChild(editButton)
             toDoButtonDivs.appendChild(deleteButton)

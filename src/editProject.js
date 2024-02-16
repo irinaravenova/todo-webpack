@@ -1,11 +1,17 @@
 import renderProjects from "./renderProjects"
 import renderTodos from "./renderTodos"
+import renderAll from "./renderAll"
 
 export default function editProject(project, newProjectName) {
+
+
 
     // Get existing project array from localStorage
     const workingArray = JSON.parse(localStorage.getItem("projectArray"))
     console.log(workingArray)
+
+    const contentBox = document.querySelector('.content')
+    const projectHeader = document.querySelector('.project-header')
 
     // Iterate through projectArray from LS...
     for (let i = 0; i < workingArray.length; i++) {
@@ -21,24 +27,29 @@ export default function editProject(project, newProjectName) {
             // Set updated project array to local storage.
             localStorage.setItem("projectArray", JSON.stringify(updatedProjectArray))
 
+            renderProjects()
+
             // Clear content box 
-            const contentBox = document.querySelector('.content')
+            // const contentBox = document.querySelector('.content')
             contentBox.replaceChildren()
 
-            // Create header div to hold project name and delete button, 
-            const headerDiv = document.createElement('div')
-            headerDiv.className = "project-header-div"
+            // const projectHeader = document.querySelector('.project-header')
+            projectHeader.replaceChildren()
 
-            // Create header title using project title
+            // Create header div to hold project name and delete button, 
+            // const headerDiv = document.createElement('div')
+            // headerDiv.className = "project-header-div"
+
+            // // Create header title using project title
             const projectTitle = document.createElement('h1')
             projectTitle.innerHTML = `${newProjectName}`
-            contentBox.appendChild(projectTitle)
+            projectHeader.appendChild(projectTitle)
 
-            // Create "Edit" project button
+            // // Create "Edit" project button
             const editProjectButton = document.createElement('button')
             editProjectButton.innerHTML = "Edit"
 
-            // Create "X" delete button
+            // // Create "X" delete button
             const deleteProjectButton = document.createElement('button')
             deleteProjectButton.innerHTML = "X"
 
@@ -50,6 +61,15 @@ export default function editProject(project, newProjectName) {
                 const editProjectForm = document.getElementById('edit-project-form')
                 editProjectForm.showModal()
 
+                let projectSelectNew = document.getElementById('new-project')
+                let storedProjectArray = JSON.parse(localStorage.getItem("projectArray"))
+            
+                for (let i = 0; i < storedProjectArray.length; i++) {
+                    let option = document.createElement("option")
+                    option.textContent = storedProjectArray[i]
+                    projectSelectNew.appendChild(option)
+                }
+
                 // On submitting new project name, pass old project name and new project name 
                 // to editProject() module function.
                 document.getElementById("edit-project").addEventListener('click', function(e) {
@@ -57,6 +77,7 @@ export default function editProject(project, newProjectName) {
                     editProject(project, document.getElementById("new-project-name").value)
                     editProjectForm.close()
                     location.reload()
+                    renderAll()
                     
                 })
 
@@ -70,15 +91,17 @@ export default function editProject(project, newProjectName) {
                 // Pass project name to module
                 deleteProject(project)
                 location.reload()
+                renderAll()
+
                 
 
             })
 
             // And add them both to header div, then add header div to content box.
-            headerDiv.appendChild(projectTitle)
-            headerDiv.appendChild(editProjectButton)
-            headerDiv.appendChild(deleteProjectButton)
-            contentBox.appendChild(headerDiv)
+            // headerDiv.appendChild(projectTitle)
+            projectHeader.appendChild(editProjectButton)
+            projectHeader.appendChild(deleteProjectButton)
+            // contentBox.appendChild(headerDiv)
 
             
 
@@ -109,11 +132,11 @@ export default function editProject(project, newProjectName) {
             
             // Change project names of todo objects and update them in localstorage.
             localStorage.setItem(objectKey, JSON.stringify(toDoObject))
-
+            // renderAll()
         }
     }
 
 
     renderTodos(newProjectName) 
-      
+      location.reload()
 }

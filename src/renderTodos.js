@@ -1,20 +1,12 @@
 import renderAll from "./renderAll"
-import renderProjects from "./renderProjects"
+import { format } from "date-fns";
+
 
 // Get project name passed in from renderProjects module function.
 export default function renderTodos(project) {
 
     const contentBox = document.querySelector('.content')
     // contentBox.replaceChildren()
-
-    // // Create header div to hold project name and delete button, 
-    // const headerDiv = document.createElement('div')
-    // headerDiv.className = "project-header-div"
-
-    // // Create header title using project title
-    // const projectTitle = document.createElement('h1')
-    // projectTitle.innerHTML = `${project}`
-    // contentBox.appendChild(projectTitle)
 
 
     for (let i = 0; i < localStorage.length; i++) {
@@ -47,8 +39,14 @@ export default function renderTodos(project) {
             const toDoNotes = document.createElement('p')
             toDoNotes.innerHTML = `${toDoMatch.notes}`
 
+            const date1 = format(
+                `${((toDoMatch.dueDate).toString()).replaceAll("-", '/')}`,
+                'MMMM d yyyy',
+                new Date()
+            )
+
             const todoDueDate = document.createElement('date')
-            todoDueDate.innerHTML = `${(toDoMatch.dueDate).toString()}`
+            todoDueDate.innerHTML = `${date1}`
 
             const todoNotes = document.createElement('p')
             todoNotes.innerHTML = `${toDoMatch.notes}`
@@ -56,6 +54,8 @@ export default function renderTodos(project) {
             // Priority range dropdown menu
             const priorityRange = document.createElement('p')
             priorityRange.innerHTML = `${'Priority: ' + toDoMatch.priority}`
+
+
 
             // Checkbox to toggle completion of task
             const checkBox = document.createElement('INPUT')
@@ -68,6 +68,7 @@ export default function renderTodos(project) {
             else if ((toDoMatch.checkList).toString() == "false") {
                 checkBox.checked = false
             }
+
 
             // On click of checkbox,
             checkBox.addEventListener('click', () => {
@@ -90,6 +91,8 @@ export default function renderTodos(project) {
 
             // On click of edit button,
             editButton.addEventListener('click', () => {
+
+                
 
                 console.log(key)
                 console.log(toDoMatch) 
@@ -160,7 +163,7 @@ export default function renderTodos(project) {
                 
                 // renderTodos(newProjectValue)
 
-                // location.reload()
+                location.reload()
             })
     
             const deleteButton = document.createElement('button')
