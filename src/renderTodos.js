@@ -28,6 +28,7 @@ export default function renderTodos(project) {
             
             const toDoTitle = document.createElement('p')
             toDoTitle.style.fontSize = "xx-large"
+            toDoTitle.style.textAlign = "center"
             toDoTitle.innerHTML = `${toDoMatch.title}`
 
             const toDoDescription = document.createElement('p')
@@ -53,13 +54,17 @@ export default function renderTodos(project) {
 
             // Priority range dropdown menu
             const priorityRange = document.createElement('p')
-            priorityRange.innerHTML = `${'Priority: ' + toDoMatch.priority}`
+            priorityRange.innerHTML = `${'Priority: ' + toDoMatch.priority.charAt(0).toUpperCase() + toDoMatch.priority.slice(1).toLowerCase()}`
 
-
+            // Create checkbox container to facilitate custom styling
+            const checkContainer = document.createElement('div')
+            checkContainer.className = "checkbox-container"
 
             // Checkbox to toggle completion of task
             const checkBox = document.createElement('INPUT')
             checkBox.setAttribute("type", "checkbox")
+
+            checkContainer.appendChild(checkBox)
 
             // Show checked or not based on localstorage data
             if ((toDoMatch.checkList).toString() == "true") {
@@ -68,6 +73,7 @@ export default function renderTodos(project) {
             else if ((toDoMatch.checkList).toString() == "false") {
                 checkBox.checked = false
             }
+
 
 
             // On click of checkbox,
@@ -182,8 +188,8 @@ export default function renderTodos(project) {
             })
 
             // Append items to div and div to content box
-            toDoContainer.appendChild(checkBox)
             toDoContainer.appendChild(toDoTitle)
+            toDoContainer.appendChild(checkContainer)
             toDoContainer.appendChild(toDoProject)
             toDoContainer.appendChild(toDoDescription)
             toDoContainer.appendChild(todoDueDate)

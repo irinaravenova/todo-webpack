@@ -16,10 +16,6 @@ export default function renderAll() {
     projectTitle.innerHTML = "All Tasks"
     projectHeader.appendChild(projectTitle)
     
-
-
-    // contentBox.appendChild(projectTitle)
-
     let editTodoForm = document.getElementById('edit-todo-form')
 
     for (let i = 0; i < localStorage.length; i++) {
@@ -40,7 +36,7 @@ export default function renderAll() {
             // Create checkbox container to facilitate custom styling
             const checkContainer = document.createElement('div')
             checkContainer.className = "checkbox-container"
-            checkContainer.style.justifyContent = 'center'
+            // checkContainer.style.justifyContent = 'center'
 
             const checkBox = document.createElement('INPUT')
             checkBox.setAttribute("type", "checkbox")
